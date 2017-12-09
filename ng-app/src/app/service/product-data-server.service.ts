@@ -8,7 +8,7 @@ import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class ProductDataServerService {
-
+  private product: Product;
   constructor(private http:Http) { }
 
   getProductsData(){
@@ -60,4 +60,17 @@ export class ProductDataServerService {
       .map(res => res.json());
   }
 
+  deleteProduct(id:number){
+    let headers = new Headers({'Content-Type': 'application/json'});
+    let options = new RequestOptions({headers: headers});
+    return this.http.delete('http://localhost:8080/delete/'+id,options)
+      .map((response:Response) => response.json());
+  }
+
+  updateProduct(product:Product){
+    let headers = new Headers({'Content-Type': 'application/json'});
+    let options = new RequestOptions({headers: headers});
+    return this.http.put('http://localhost:8080/product',JSON.stringify(product),options)
+      .map((response:Response) => response.json());
+  }
 }

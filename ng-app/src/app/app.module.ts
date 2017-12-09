@@ -15,6 +15,7 @@ import {HttpModule} from '@angular/http';
 import {FormsModule} from '@angular/forms';
 import { CartComponent } from './cart/cart.component';
 import { ManagementComponent } from './products/management/management.component';
+import { UpdateComponent } from './products/update/update.component';
 
 
 
@@ -28,6 +29,7 @@ import { ManagementComponent } from './products/management/management.component'
     ViewComponent,
     CartComponent,
     ManagementComponent,
+    UpdateComponent,
   ],
   imports: [
     BrowserModule,

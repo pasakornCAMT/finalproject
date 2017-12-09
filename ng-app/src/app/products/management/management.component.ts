@@ -16,6 +16,17 @@ export class ManagementComponent implements OnInit {
     this.productDataServerService.getProductsData().subscribe(products => this.products = products);
   }
 
+  goToUpdateProduct(product:Product){
+    this.router.navigate(['/update',product.id])
+  }
+
+  deleteProduct(product:Product){
+/*    this.productDataServerService.deleteProduct(product.id).subscribe((data)=>{
+      this.products.splice(this.products.indexOf(product),1)
+    });*/
+    this.productDataServerService.deleteProduct(product.id)
+  }
+
 
 
 }

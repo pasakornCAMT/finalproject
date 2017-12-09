@@ -4,6 +4,7 @@ import {AddComponent} from './add/add.component';
 import {NgModule} from '@angular/core';
 import {ViewComponent} from './view/view.component';
 import {ManagementComponent} from './management/management.component';
+import {UpdateComponent} from './update/update.component';
 
 const productRoutes: Routes = [
   {path: 'list', component: ProductListComponent},
@@ -14,7 +15,8 @@ const productRoutes: Routes = [
     pathMatch: 'full'
   },
   {path: 'detail/:id', component: ViewComponent},
-  {path: 'manage-product', component: ManagementComponent}
+  {path: 'manage-product', component: ManagementComponent},
+  {path: 'update/:id', component: UpdateComponent}
 ];
 @NgModule({
   imports: [

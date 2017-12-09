@@ -9,8 +9,8 @@
         <p>{{product.description}}</p>
         <h4>{{product.price}}฿</h4>
         <p>
-          <a class="btn btn-default" role="button">Update</a>
-          <a class="btn btn-danger" role="button">Delete</a>
+          <a class="btn btn-default" role="button" (click)="goToUpdateProduct(product)">Update</a>
+          <a class="btn btn-danger" role="button" (click)="deleteProduct(product)">Delete</a>
         </p>
       </div>
     </div>
