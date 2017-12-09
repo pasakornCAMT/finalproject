@@ -13,6 +13,9 @@ import {ProductDataDbService} from './service/product-data-db.service';
 import {ProductDataServerService} from "./service/product-data-server.service";
 import {HttpModule} from '@angular/http';
 import {FormsModule} from '@angular/forms';
+import { CartComponent } from './cart/cart.component';
+import { ManagementComponent } from './products/management/management.component';
+
 
 
 @NgModule({
@@ -22,7 +25,9 @@ import {FormsModule} from '@angular/forms';
     AddComponent,
     ProductListComponent,
     NavigationComponent,
-    ViewComponent
+    ViewComponent,
+    CartComponent,
+    ManagementComponent,
   ],
   imports: [
     BrowserModule,

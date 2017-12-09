@@ -3,6 +3,7 @@ import {ProductListComponent} from './product-list/product-list.component';
 import {AddComponent} from './add/add.component';
 import {NgModule} from '@angular/core';
 import {ViewComponent} from './view/view.component';
+import {ManagementComponent} from './management/management.component';
 
 const productRoutes: Routes = [
   {path: 'list', component: ProductListComponent},
@@ -12,7 +13,8 @@ const productRoutes: Routes = [
     redirectTo: '/list',
     pathMatch: 'full'
   },
-  {path: 'detail/:id', component: ViewComponent}
+  {path: 'detail/:id', component: ViewComponent},
+  {path: 'manage-product', component: ManagementComponent}
 ];
 @NgModule({
   imports: [
