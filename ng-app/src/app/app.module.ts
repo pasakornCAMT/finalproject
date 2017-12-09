@@ -10,6 +10,7 @@ import {AppRoutingModule} from './app-routing.module';
 import { NavigationComponent } from './navigation/navigation.component';
 import { ViewComponent } from './products/view/view.component';
 import {ProductDataDbService} from './service/product-data-db.service';
+import {ProductDataServerService} from "./service/product-data-server.service";
 
 
 @NgModule({
@@ -27,7 +28,7 @@ import {ProductDataDbService} from './service/product-data-db.service';
     AppRoutingModule
   ],
   providers: [
-    ProductDataDbService,
+    {provide:ProductDataDbService, useClass: ProductDataServerService}
   ],
   bootstrap: [AppComponent]
 })
