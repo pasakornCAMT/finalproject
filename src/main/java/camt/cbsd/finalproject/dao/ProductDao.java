@@ -9,4 +9,5 @@ public interface ProductDao {
     Product findById(long id);
     Product addProduct(Product product);
     Integer size();
+    List<Product> getProducts(String searchText);
 }

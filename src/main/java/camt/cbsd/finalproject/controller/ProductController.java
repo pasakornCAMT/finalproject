@@ -90,4 +90,15 @@ public class ProductController {
         }
     }
 
+
+    @GetMapping("products")
+    public ResponseEntity<?> queryProduct(@RequestParam("search") String query) {
+        List<Product> products = productService.queryProduct(query);
+        if (products != null)
+            return ResponseEntity.ok(products);
+        else
+            //http code 204
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+
+    }
 }
