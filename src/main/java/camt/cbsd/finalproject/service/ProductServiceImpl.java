@@ -60,4 +60,9 @@ public class ProductServiceImpl implements ProductService {
         }
         return  productDao.getProducts(query);
     }
+
+    @Override
+    public void deleteProduct(Product product) {
+        productDao.deleteProduct(product);
+    }
 }

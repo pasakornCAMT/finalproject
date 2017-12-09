@@ -45,6 +45,10 @@ public class ProductDaoDBImpl implements ProductDao {
         return productRepository.findByNameIgnoreCaseContaining(searchText);
     }
 
+    @Override
+    public void deleteProduct(Product product) {
+        productRepository.delete(product);
+    }
 
 
 }

@@ -9,4 +9,5 @@ public interface ProductService {
     Product findById(long id);
     Product addProduct(Product product);
     List<Product> queryProduct(String query);
+    void deleteProduct(Product product);
 }

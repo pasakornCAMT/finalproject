@@ -99,6 +99,13 @@ public class ProductController {
         else
             //http code 204
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-
     }
+
+    @DeleteMapping("/products/{id}")
+    public boolean deleteProduct(@PathVariable("product")Product product){
+        productService.deleteProduct(product);
+        return true;
+    }
+
+
 }
