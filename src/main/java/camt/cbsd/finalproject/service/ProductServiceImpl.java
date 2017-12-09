@@ -2,7 +2,6 @@ package camt.cbsd.finalproject.service;
 
 import camt.cbsd.finalproject.dao.ProductDao;
 import camt.cbsd.finalproject.entity.Product;
-import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Service;

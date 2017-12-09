@@ -11,6 +11,8 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { ViewComponent } from './products/view/view.component';
 import {ProductDataDbService} from './service/product-data-db.service';
 import {ProductDataServerService} from "./service/product-data-server.service";
+import {HttpModule} from '@angular/http';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -24,11 +26,13 @@ import {ProductDataServerService} from "./service/product-data-server.service";
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    HttpModule,
     ProductRoutingModule,
     AppRoutingModule
   ],
   providers: [
-    {provide:ProductDataDbService, useClass: ProductDataServerService}
+    ProductDataServerService
   ],
   bootstrap: [AppComponent]
 })

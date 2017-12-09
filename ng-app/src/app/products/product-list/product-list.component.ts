@@ -11,10 +11,10 @@ import {ProductDataServerService} from "../../service/product-data-server.servic
 })
 export class ProductListComponent implements OnInit {
   products: Product[];
-  constructor(private productDataDbService: ProductDataDbService, private router: Router) { }
+  constructor(private productDataServerService: ProductDataServerService, private router: Router) { }
 
   ngOnInit() {
-    this.productDataDbService.getProductsData().subscribe(products => this.products = products);
+    this.productDataServerService.getProductsData().subscribe(products => this.products = products);
   }
   showDetail(product: Product){
     this.router.navigate(['/detail',product.id])

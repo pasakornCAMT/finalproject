@@ -34,4 +34,9 @@ public class ProductDaoDBImpl implements ProductDao {
     public Product addProduct(Product product) {
         return productRepository.save(product);
     }
+
+    @Override
+    public Integer size() {
+        return (int)productRepository.count();
+    }
 }

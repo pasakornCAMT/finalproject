@@ -8,4 +8,5 @@ public interface ProductDao {
     List<Product> getProducts();
     Product findById(long id);
     Product addProduct(Product product);
+    Integer size();
 }
