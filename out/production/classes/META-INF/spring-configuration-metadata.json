@@ -1,0 +1,22 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "camt.cbsd.finalproject.service.ProductServiceImpl",
+      "name": "server",
+      "type": "camt.cbsd.finalproject.service.ProductServiceImpl"
+    },
+    {
+      "sourceType": "camt.cbsd.finalproject.config.DataLoader",
+      "name": "server",
+      "type": "camt.cbsd.finalproject.config.DataLoader"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "camt.cbsd.finalproject.service.ProductServiceImpl",
+      "name": "server.products",
+      "type": "java.util.List<camt.cbsd.finalproject.entity.Product>"
+    }
+  ]
+}
