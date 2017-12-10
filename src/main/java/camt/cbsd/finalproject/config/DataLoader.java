@@ -2,11 +2,6 @@ package camt.cbsd.finalproject.config;
 
 import camt.cbsd.finalproject.dao.ProductDao;
 import camt.cbsd.finalproject.entity.Product;
-import camt.cbsd.finalproject.entity.security.Authority;
-import camt.cbsd.finalproject.entity.security.AuthorityName;
-import camt.cbsd.finalproject.entity.security.User;
-import camt.cbsd.finalproject.security.repository.AuthorityRepository;
-import camt.cbsd.finalproject.security.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -52,68 +47,9 @@ public class DataLoader implements ApplicationRunner{
         productDao.addProduct(product02);
         productDao.addProduct(product03);
 
-        securitySetup();
-    }
-
-    @Autowired
-    UserRepository userRepository;
-
-    @Autowired
-    AuthorityRepository authorityRepository;
-
-    public void securitySetup(){
-        User user1 = User.builder()
-                .username("cus")
-                .password("cus")
-                .firstname("cus")
-                .lastname("cus")
-                .email("cus@cus.com")
-                .enabled(true)
-                .lastPasswordResetDate(Date.from(LocalDate.of(2016,01,01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
-                .build();
-
-        User user2 = User.builder()
-                .username("shop")
-                .password("shop")
-                .firstname("shop")
-                .lastname("shop")
-                .email("shop@shop.com")
-                .enabled(true)
-                .lastPasswordResetDate(Date.from(LocalDate.of(2016,01,01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
-                .build();
-
-        User user3 = User.builder()
-                .username("admin")
-                .password("admin")
-                .firstname("admin")
-                .lastname("admin")
-                .email("admin@admin.com")
-                .enabled(true)
-                .lastPasswordResetDate(Date.from(LocalDate.of(2016,01,01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
-                .build();
-
-        //Authority auth1 = Authority.builder().name(AuthorityName.ROLE_CUSTOMER).build();
-        //Authority auth2 = Authority.builder().name(AuthorityName.ROLE_SHOPKEEPER).build();
-        Authority auth3 = Authority.builder().name(AuthorityName.ROLE_ADMIN).build();
-        Authority auth4 = Authority.builder().name(AuthorityName.ROLE_USER).build();
-
-        authorityRepository.save(auth4);
-        //authorityRepository.save(auth2);
-        authorityRepository.save(auth3);
-
-        user1.setAuthorities(new ArrayList<>());
-        user1.getAuthorities().add(auth4);
-        user1.getAuthorities().add(auth3);
-        //user2.setAuthorities(new ArrayList<>());
-        //user2.getAuthorities().add(auth2);
-        //user3.setAuthorities(new ArrayList<>());
-        //user3.getAuthorities().add(auth3);
-
-        //userRepository.save(user1);
-        //userRepository.save(user2);
-        //userRepository.save(user3);
-
 
     }
+
+
 
 }
