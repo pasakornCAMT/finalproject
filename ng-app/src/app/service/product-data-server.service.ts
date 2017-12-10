@@ -4,15 +4,23 @@ import "rxjs/add/operator/mergeMap";
 import {Http, Response, RequestOptions, Headers, URLSearchParams} from "@angular/http";
 import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Observable';
-import {ArrayType} from "@angular/compiler/src/output/output_ast";
+import {AuthenticationService} from './authentication.service';
+
 
 
 @Injectable()
 export class ProductDataServerService {
   private product: Product;
-  constructor(private http:Http) { }
+  constructor(private http:Http, private authenticationService: AuthenticationService) { }
 
+  private headers = new Headers({
+    'Content-type:': 'application/json',
+    'Authorization': 'Bearer '+this.authenticationService.getToken()
+  });
   getProductsData(){
+/*    let productArray: Product[];
+    return this.http.get('http://localhost:8080/product',{headers:this.headers})
+      .map(res=>res.json());*/
     let productArray: Product[];
     return this.http.get('http://localhost:8080/product')
       .map(res=>res.json());

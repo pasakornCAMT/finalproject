@@ -9,8 +9,10 @@
   </div>
 </div>
 
-<input type="text" placeholder="Search for Min..." id="min" [(ngModel)]="min"> -
-<input type="text" placeholder="Search for Min..." id="max" [(ngModel)]="max">
+  <input type="text" placeholder="Search for Min..." id="min" [(ngModel)]="min">
+  -
+  <input type="text" placeholder="Search for Min..." id="max" [(ngModel)]="max">
+
 
 <div *ngFor="let product of products" class="row">
   <div class="col-sm-6 col-md-4" *ngIf="product.show == true">
@@ -23,7 +25,7 @@
         <p>{{product.description}}</p>
         <h4>{{product.price}}฿</h4>
         <p>
-          <a class="btn btn-primary" role="button">Add to Cart</a>
+          <a class="btn btn-primary" role="button" (click)="addToCart(product)">Add to Cart</a>
         </p>
       </div>
     </div>

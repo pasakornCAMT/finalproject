@@ -63,26 +63,6 @@ public class DataLoader implements ApplicationRunner{
 
     public void securitySetup(){
         User user1 = User.builder()
-                .username("cus")
-                .password("cus")
-                .firstname("cus")
-                .lastname("cus")
-                .email("cus@cus.com")
-                .enabled(true)
-                .lastPasswordResetDate(Date.from(LocalDate.of(2016,01,01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
-                .build();
-
-        User user2 = User.builder()
-                .username("shop")
-                .password("shop")
-                .firstname("shop")
-                .lastname("shop")
-                .email("shop@shop.com")
-                .enabled(true)
-                .lastPasswordResetDate(Date.from(LocalDate.of(2016,01,01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
-                .build();
-
-        User user3 = User.builder()
                 .username("admin")
                 .password("admin")
                 .firstname("admin")
@@ -92,26 +72,42 @@ public class DataLoader implements ApplicationRunner{
                 .lastPasswordResetDate(Date.from(LocalDate.of(2016,01,01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
                 .build();
 
-        //Authority auth1 = Authority.builder().name(AuthorityName.ROLE_CUSTOMER).build();
-        //Authority auth2 = Authority.builder().name(AuthorityName.ROLE_SHOPKEEPER).build();
-        Authority auth3 = Authority.builder().name(AuthorityName.ROLE_ADMIN).build();
-        Authority auth4 = Authority.builder().name(AuthorityName.ROLE_USER).build();
+        User user2 = User.builder()
+                .username("user")
+                .password("user")
+                .firstname("user")
+                .lastname("user")
+                .email("enabled@user.com")
+                .enabled(true)
+                .lastPasswordResetDate(Date.from(LocalDate.of(2016,01,01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
+                .build();
+        User user3 = User.builder()
+                .username("disabled")
+                .password("disabled")
+                .firstname("user")
+                .lastname("user")
+                .email("disabled@user.com")
+                .enabled(false)
+                .lastPasswordResetDate(Date.from(LocalDate.of(2016,01,01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
+                .build();
+        Authority auth1 = Authority.builder().name(AuthorityName.ROLE_USER).build();
+        Authority auth2 = Authority.builder().name(AuthorityName.ROLE_ADMIN).build();
 
-        authorityRepository.save(auth4);
-        //authorityRepository.save(auth2);
-        authorityRepository.save(auth3);
-
+        authorityRepository.save(auth1);
+        authorityRepository.save(auth2);
         user1.setAuthorities(new ArrayList<>());
-        user1.getAuthorities().add(auth4);
-        user1.getAuthorities().add(auth3);
-        //user2.setAuthorities(new ArrayList<>());
-        //user2.getAuthorities().add(auth2);
-        //user3.setAuthorities(new ArrayList<>());
-        //user3.getAuthorities().add(auth3);
+        user1.getAuthorities().add(auth1);
+        user1.getAuthorities().add(auth2);
+        user2.setAuthorities(new ArrayList<>());
+        user2.getAuthorities().add(auth1);
+        user3.setAuthorities(new ArrayList<>());
+        user3.getAuthorities().add(auth1);
 
-        //userRepository.save(user1);
-        //userRepository.save(user2);
-        //userRepository.save(user3);
+        userRepository.save(user1);
+        userRepository.save(user2);
+        userRepository.save(user3);
+
+
 
 
     }

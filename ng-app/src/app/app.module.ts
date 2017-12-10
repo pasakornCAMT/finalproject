@@ -18,6 +18,9 @@ import { ManagementComponent } from './products/management/management.component'
 import { UpdateComponent } from './products/update/update.component';
 import { LoginComponent } from './login/login.component';
 import {AuthenticationService} from './service/authentication.service';
+import { ConfirmationComponent } from './confirmation/confirmation.component';
+import { SlipComponent } from './confirmation/slip/slip.component';
+import { PaypalComponent } from './confirmation/paypal/paypal.component';
 
 
 
@@ -33,6 +36,9 @@ import {AuthenticationService} from './service/authentication.service';
     ManagementComponent,
     UpdateComponent,
     LoginComponent,
+    ConfirmationComponent,
+    SlipComponent,
+    PaypalComponent,
   ],
   imports: [
     BrowserModule,

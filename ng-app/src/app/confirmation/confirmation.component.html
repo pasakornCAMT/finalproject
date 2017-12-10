@@ -8,16 +8,13 @@
         </div>
         <p>{{product.description}}</p>
         <h4>{{product.price}}฿</h4>
-        <p>
-          <label class="control-label">Amount : </label>
-          <input type="number" class="input-amount form-control" value="0" name="Amount">
-          <a class="btn btn-danger" role="button" (click)="removeSelected(product)">Remove</a>
-        </p>
       </div>
     </div>
   </div>
 </div>
-<button class="btn btn-success" type="submit" (click)="checkout(products)">Confirm</button>
+<button class="btn btn-primary" (click)="goToSlipPayment(product)">Pay by cash</button>
+<button class="btn btn-primary" (click)="goToPaypalPayment(product)">Pay by Paypal</button>
+
 
 
 

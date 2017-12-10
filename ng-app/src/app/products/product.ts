@@ -6,4 +6,5 @@ export class Product {
   price: number;
   image: string;
   show: boolean;
+  selected: boolean;
 }
