@@ -16,6 +16,8 @@ import {FormsModule} from '@angular/forms';
 import { CartComponent } from './cart/cart.component';
 import { ManagementComponent } from './products/management/management.component';
 import { UpdateComponent } from './products/update/update.component';
+import { LoginComponent } from './login/login.component';
+import {AuthenticationService} from './service/authentication.service';
 
 
 
@@ -30,6 +32,7 @@ import { UpdateComponent } from './products/update/update.component';
     CartComponent,
     ManagementComponent,
     UpdateComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,8 @@ import { UpdateComponent } from './products/update/update.component';
     AppRoutingModule
   ],
   providers: [
-    ProductDataServerService
+    ProductDataServerService,
+    AuthenticationService
   ],
   bootstrap: [AppComponent]
 })
