@@ -3,6 +3,7 @@ import {Product} from '../product';
 import {ProductDataDbService} from '../../service/product-data-db.service';
 import {Router} from '@angular/router';
 import {ProductDataServerService} from "../../service/product-data-server.service";
+import {ArrayType} from "@angular/compiler/src/output/output_ast";
 
 @Component({
   selector: 'app-product-list',
@@ -11,6 +12,8 @@ import {ProductDataServerService} from "../../service/product-data-server.servic
 })
 export class ProductListComponent implements OnInit {
   products: Product[];
+  min:number = 0;
+  max:number = 999;
   constructor(private productDataServerService: ProductDataServerService, private router: Router) { }
 
   ngOnInit() {

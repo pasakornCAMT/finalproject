@@ -10,4 +10,5 @@ public interface ProductService {
     Product addProduct(Product product);
     List<Product> queryProduct(String query);
     Product updateProduct(Product product);
+
 }

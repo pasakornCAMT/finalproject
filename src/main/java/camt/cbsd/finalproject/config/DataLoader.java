@@ -35,9 +35,9 @@ public class DataLoader implements ApplicationRunner{
     @Override
     public void run(ApplicationArguments args) throws Exception {
         imageBaseUrl = baseUrl + imageUrl;
-        Product product01=Product.builder().productId("P-001").name("Shingha").description("product1").price(250).image(imageBaseUrl+"product1.jpg").show(true).build();
-        Product product02=Product.builder().productId("P-002").name("Nestle").description("product2").price(250).image(imageBaseUrl+"product2.jpg").show(true).build();
-        Product product03=Product.builder().productId("P-003").name("Cristal").description("product2").price(250).image(imageBaseUrl+"product3.jpg").show(true).build();
+        Product product01=Product.builder().productId("P-001").name("Shingha").description("product1").price(100).image(imageBaseUrl+"product1.jpg").show(true).build();
+        Product product02=Product.builder().productId("P-002").name("Nestle").description("product2").price(200).image(imageBaseUrl+"product2.jpg").show(true).build();
+        Product product03=Product.builder().productId("P-003").name("Cristal").description("product2").price(300).image(imageBaseUrl+"product3.jpg").show(true).build();
 
         productDao.addProduct(product01);
         productDao.addProduct(product02);
