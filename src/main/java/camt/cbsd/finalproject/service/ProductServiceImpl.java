@@ -70,4 +70,5 @@ public class ProductServiceImpl implements ProductService {
     public Product updateProduct(Product product) {
         return productDao.updateProduct(product);
     }
+
 }

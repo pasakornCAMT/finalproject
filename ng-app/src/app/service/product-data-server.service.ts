@@ -60,6 +60,8 @@ export class ProductDataServerService {
       .map(res => res.json());
   }
 
+
+
   deleteProduct(id:number){
     let headers = new Headers({'Content-Type': 'application/json'});
     let options = new RequestOptions({headers: headers});

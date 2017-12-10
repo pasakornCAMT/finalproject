@@ -102,6 +102,7 @@ public class ProductController {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
+
     @DeleteMapping("/delete/{id}")
     public boolean deleteProduct(@PathVariable("id")long id){
         productService.deleteProduct(id);

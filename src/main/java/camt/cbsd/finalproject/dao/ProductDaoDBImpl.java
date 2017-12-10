@@ -42,7 +42,7 @@ public class ProductDaoDBImpl implements ProductDao {
 
     @Override
     public List<Product> getProducts(String searchText){
-        return productRepository.findByNameIgnoreCaseContaining(searchText);
+        return productRepository.findByNameIgnoreCaseContainingOrDescriptionIgnoreCaseContaining(searchText,searchText);
     }
 
     @Override
@@ -54,6 +54,7 @@ public class ProductDaoDBImpl implements ProductDao {
     public Product updateProduct(Product product) {
         return productRepository.save(product);
     }
+
 
 
 }

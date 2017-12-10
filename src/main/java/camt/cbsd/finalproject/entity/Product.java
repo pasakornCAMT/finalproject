@@ -31,5 +31,4 @@ public class Product {
     @NonNull
     String image;
 
-    //test push
 }
