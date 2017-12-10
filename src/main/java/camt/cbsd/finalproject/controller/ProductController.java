@@ -55,6 +55,11 @@ public class ProductController {
       return ResponseEntity.ok(product);
     }
 
+    @Value("${server.baseUrl}")
+    String baseUrl;
+    @Value("${server.imageUrl}")
+    String imageUrl;
+
     @Value("${server.imageServerDir}")
     String imageServerDir;
     @GetMapping(
@@ -85,7 +90,7 @@ public class ProductController {
             String newFilename = Integer.toString(LocalTime.now().hashCode(),16)+Integer.toString(oldFilename.hashCode(),16)+"."+ext;
             Path path = Paths.get(imageServerDir+newFilename);
             Files.write(path,bytes);
-            return ResponseEntity.ok(newFilename);
+            return ResponseEntity.ok(baseUrl+imageUrl+newFilename);
         }catch (IOException e){
             e.printStackTrace();
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
@@ -108,5 +113,6 @@ public class ProductController {
     public Product updateProduct(@RequestBody Product product){
         return productService.updateProduct(product);
     }
+
 
 }

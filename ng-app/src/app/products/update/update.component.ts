@@ -34,4 +34,10 @@ export class UpdateComponent implements OnInit {
   }
 
 
+  onFileChange(event,product: any){
+    var filename = event.target.files[0].name;
+    console.log(filename);
+    this.product.image = filename;
+  }
+
 }

@@ -74,6 +74,7 @@ export class ProductDataServerService {
     let headers = new Headers({'Content-Type': 'application/json'});
     let options = new RequestOptions({headers: headers});
     return this.http.put('http://localhost:8080/product',JSON.stringify(product),options)
-      .map((response:Response) => response.json());
+      .map((response:Response) => response.json()
+      );
   }
 }
