@@ -21,10 +21,11 @@ export class ManagementComponent implements OnInit {
   }
 
   deleteProduct(product:Product){
-/*    this.productDataServerService.deleteProduct(product.id).subscribe((data)=>{
-      this.products.splice(this.products.indexOf(product),1)
-    });*/
-    this.productDataServerService.deleteProduct(product.id)
+    product.show = false;
+    this.productDataServerService.updateProduct(product).subscribe((product)=>{
+      console.log(product);
+      this.router.navigate(['/'])
+    })
   }
 
 

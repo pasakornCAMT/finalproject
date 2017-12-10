@@ -14,7 +14,7 @@
 
 
 <div *ngFor="let product of products" class="row">
-  <div class="col-sm-6 col-md-4">
+  <div class="col-sm-6 col-md-4" *ngIf="product.show == true">
     <div class="thumbnail">
       <img [src]="product.image" [title]="product.name">
       <div class="caption">

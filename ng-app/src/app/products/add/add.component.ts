@@ -23,6 +23,7 @@ export class AddComponent implements OnInit {
     let result: Product;
     console.log(this.product);
     let inputEl: HTMLInputElement = this.inputEl.nativeElement;
+    product.show = true;
     this.productDataServerService.addProduct(product,inputEl.files.item(0))
       .subscribe(resultProduct =>{
         result = resultProduct;
