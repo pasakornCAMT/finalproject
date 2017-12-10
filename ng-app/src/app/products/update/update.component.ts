@@ -27,7 +27,7 @@ export class UpdateComponent implements OnInit {
       })
   }
   updateProduct(product:Product){
-    this.productDataServerService.updateProduct(this.product).subscribe((product)=>{
+    this.productDataServerService.updateProduct(product).subscribe((product)=>{
       console.log(product);
       this.router.navigate(['/'])
     })

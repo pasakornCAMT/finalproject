@@ -10,6 +10,5 @@ public interface ProductDao {
     Product addProduct(Product product);
     Integer size();
     List<Product> getProducts(String searchText);
-    void deleteProduct(long id);
     Product updateProduct(Product product);
 }

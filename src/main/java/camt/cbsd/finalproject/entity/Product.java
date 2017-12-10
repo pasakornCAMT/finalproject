@@ -30,6 +30,8 @@ public class Product {
     double price;
     @NonNull
     String image;
+    @NonNull
+    boolean show = true;
 
     //test push
 }
