@@ -33,4 +33,31 @@ export class AuthenticationService {
   logout():void{
     localStorage.removeItem('currentUser');
   }
+
+  getCurrentUser() {
+    let details = localStorage.getItem('userDetails');
+    if (details == null || details.length == 0) {
+      return null;
+    }
+    return JSON.parse(localStorage.getItem('userDetails'));
+  }
+
+  hasRole(role: String): boolean {
+    let user: any = this.getCurrentUser();
+    if (user) {
+      let roleList: string[] = role.split(',');
+      for (let j = 0; j < roleList.length; j++) {
+        let authList = user.authorities;
+        let userRole = 'ROLE_' + roleList[j].trim().toUpperCase();
+        for (let i = 0; i < authList.length; i++) {
+          if (authList[i].name == userRole) {
+            return true;
+          }
+        }
+      }
+      return false;
+    }
+
+  }
+
 }
