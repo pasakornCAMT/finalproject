@@ -9,13 +9,12 @@
   </div>
 </div>
 
-
-
-
+<input type="text" placeholder="Search for Min..." id="min" [(ngModel)]="min"> -
+<input type="text" placeholder="Search for Min..." id="max" [(ngModel)]="max">
 
 <div *ngFor="let product of products" class="row">
   <div class="col-sm-6 col-md-4" *ngIf="product.show == true">
-    <div class="thumbnail">
+    <div class="thumbnail" *ngIf="product.price >= min && product.price <= max">
       <img [src]="product.image" [title]="product.name">
       <div class="caption">
         <div role="button" (click)="showDetail(product)">
