@@ -11,16 +11,9 @@ import {AuthenticationService} from './authentication.service';
 @Injectable()
 export class ProductDataServerService {
   private product: Product;
-  constructor(private http:Http, private authenticationService: AuthenticationService) { }
+  constructor(private http:Http) { }
 
-  private headers = new Headers({
-    'Content-type:': 'application/json',
-    'Authorization': 'Bearer '+this.authenticationService.getToken()
-  });
   getProductsData(){
-/*    let productArray: Product[];
-    return this.http.get('http://localhost:8080/product',{headers:this.headers})
-      .map(res=>res.json());*/
     let productArray: Product[];
     return this.http.get('http://localhost:8080/product')
       .map(res=>res.json());
@@ -77,4 +70,5 @@ export class ProductDataServerService {
       .map((response:Response) => response.json()
       );
   }
+
 }

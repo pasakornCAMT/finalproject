@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component,OnInit} from '@angular/core';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {ProductDataServerService} from '../../service/product-data-server.service';
 import {Product} from '../product';
@@ -33,11 +33,9 @@ export class UpdateComponent implements OnInit {
     })
   }
 
-
   onFileChange(event,product: any){
     var filename = event.target.files[0].name;
     console.log(filename);
     this.product.image = filename;
   }
-
 }

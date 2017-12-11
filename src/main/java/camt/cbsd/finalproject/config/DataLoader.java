@@ -23,6 +23,27 @@ import java.util.Date;
 @Component
 public class DataLoader implements ApplicationRunner{
     ProductDao productDao;
+
+
+    @Autowired
+    public void setProductDao(ProductDao productDao) {
+        this.productDao = productDao;
+    }
+
+    public void setUserRepository(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    public void setAuthorityRepository(AuthorityRepository authorityRepository) {
+        this.authorityRepository = authorityRepository;
+    }
+
+    @Autowired
+    UserRepository userRepository;
+
+    @Autowired
+    AuthorityRepository authorityRepository;
+
     String baseUrl;
     String imageUrl;
     String imageBaseUrl;
@@ -33,11 +54,6 @@ public class DataLoader implements ApplicationRunner{
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
-    }
-
-    @Autowired
-    public void setProductDao(ProductDao productDao) {
-        this.productDao = productDao;
     }
 
     @Transactional
@@ -54,13 +70,6 @@ public class DataLoader implements ApplicationRunner{
 
         securitySetup();
     }
-
-    @Autowired
-    UserRepository userRepository;
-
-    @Autowired
-    AuthorityRepository authorityRepository;
-
     public void securitySetup(){
         User user1 = User.builder()
                 .username("admin")
@@ -95,6 +104,7 @@ public class DataLoader implements ApplicationRunner{
 
         authorityRepository.save(auth1);
         authorityRepository.save(auth2);
+
         user1.setAuthorities(new ArrayList<>());
         user1.getAuthorities().add(auth1);
         user1.getAuthorities().add(auth2);
