@@ -15,5 +15,20 @@ export class ListOfTransactionsComponent implements OnInit {
   ngOnInit() {
     this.transactionDataServerService.getTransactionsData().subscribe(transitions => this.transactions = transitions);
   }
+  search:string;
+  onSearch(){
+    this.transactionDataServerService.findTransaction(this.search)
+      .subscribe(
+        transactions => this.transactions = transactions
+        ,(error) => {
+          if (error.status === 401){
+            //error
+          }
+        })
+  }
+
+  goToDetail(transaction:Transaction){
+    this.router.navigate(['/transaction-detail',transaction.id])
+  }
 
 }

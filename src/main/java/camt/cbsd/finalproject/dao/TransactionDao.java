@@ -8,4 +8,5 @@ public interface TransactionDao {
     List<Transaction> getTransactions();
     List<Transaction> getTransactions(String searchText);
     Transaction addTransaction(Transaction transaction);
+    Transaction findById(long id);
 }

@@ -28,4 +28,9 @@ public class TransactionServiceImpl implements TransactionService {
         }
         return  transactionDao.getTransactions(query);
     }
+
+    @Override
+    public Transaction findById(long id) {
+        return transactionDao.findById(id);
+    }
 }

@@ -77,11 +77,14 @@ public class DataLoader implements ApplicationRunner{
         productDao.addProduct(product03);
 
         Transaction transaction1 = Transaction.builder().date("12-12-2017").build();
-
         transactionDao.addTransaction(transaction1);
-
         transaction1.addProduct(product01);
         transaction1.addProduct(product02);
+
+        Transaction transaction2 = Transaction.builder().date("11-12-2017").build();
+        transactionDao.addTransaction(transaction2);
+        transaction2.addProduct(product01);
+
 
 
 

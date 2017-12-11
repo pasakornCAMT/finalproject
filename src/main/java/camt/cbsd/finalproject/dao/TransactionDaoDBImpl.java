@@ -33,4 +33,9 @@ public class TransactionDaoDBImpl implements TransactionDao{
     public Transaction addTransaction(Transaction transaction) {
         return transactionRepository.save(transaction);
     }
+
+    @Override
+    public Transaction findById(long id) {
+        return transactionRepository.findById(id);
+    }
 }
