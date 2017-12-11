@@ -93,16 +93,20 @@ public class DataLoader implements ApplicationRunner{
 
        Actor actor1=Actor.builder().actorId("A-001").name("Nekky").build();
        Actor actor2=Actor.builder().actorId("A-002").name("Puu").build();
+       Actor actor3=Actor.builder().actorId("A-003").name("Nonae").build();
 
        actorDao.addActor(actor1);
        actorDao.addActor(actor2);
+       actorDao.addActor(actor3);
 
         securitySetup();
 
         actor1.setUser(user1);
         user1.setActor(actor1);
         actor2.setUser(user2);
-        user2.setActor(actor1);
+        user2.setActor(actor2);
+        actor3.setUser(user3);
+        user3.setActor(actor3);
     }
 
     User user1, user2, user3;
@@ -127,16 +131,16 @@ public class DataLoader implements ApplicationRunner{
                 .lastPasswordResetDate(Date.from(LocalDate.of(2016,01,01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
                 .build();
          user3 = User.builder()
-                .username("disabled")
-                .password("disabled")
-                .firstname("user")
-                .lastname("user")
-                .email("disabled@user.com")
-                .enabled(false)
+                .username("customer")
+                .password("customer")
+                .firstname("customer")
+                .lastname("customer")
+                .email("customer@customer.com")
+                .enabled(true)
                 .lastPasswordResetDate(Date.from(LocalDate.of(2016,01,01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
                 .build();
-        Authority auth1 = Authority.builder().name(AuthorityName.ROLE_USER).build();
-        Authority auth2 = Authority.builder().name(AuthorityName.ROLE_ADMIN).build();
+        Authority auth1 = Authority.builder().name(AuthorityName.ROLE_ADMIN).build();
+        Authority auth2 = Authority.builder().name(AuthorityName.ROLE_USER).build();
         Authority auth3 = Authority.builder().name(AuthorityName.ROLE_CUSTOMER).build();
         Authority auth4 = Authority.builder().name(AuthorityName.ROLE_SHOPKEEPER).build();
 
@@ -148,11 +152,11 @@ public class DataLoader implements ApplicationRunner{
         authorityRepository.save(auth4);
 
         user1.setAuthorities(new ArrayList<>());
-        user1.getAuthorities().add(auth2);
+        user1.getAuthorities().add(auth1);
         user2.setAuthorities(new ArrayList<>());
-        user2.getAuthorities().add(auth1);
+        user2.getAuthorities().add(auth2);
         user3.setAuthorities(new ArrayList<>());
-        user3.getAuthorities().add(auth1);
+        user3.getAuthorities().add(auth3);
 
         userRepository.save(user1);
         userRepository.save(user2);
