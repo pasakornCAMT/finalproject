@@ -21,6 +21,8 @@ import {AuthenticationService} from './service/authentication.service';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { SlipComponent } from './confirmation/slip/slip.component';
 import { PaypalComponent } from './confirmation/paypal/paypal.component';
+import { ListOfTransactionsComponent } from './transactions/list-of-transactions/list-of-transactions.component';
+import {TransactionDataServerService} from './service/transaction-data-server.service';
 
 
 
@@ -39,6 +41,7 @@ import { PaypalComponent } from './confirmation/paypal/paypal.component';
     ConfirmationComponent,
     SlipComponent,
     PaypalComponent,
+    ListOfTransactionsComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,7 +52,8 @@ import { PaypalComponent } from './confirmation/paypal/paypal.component';
   ],
   providers: [
     ProductDataServerService,
-    AuthenticationService
+    AuthenticationService,
+    TransactionDataServerService
   ],
   bootstrap: [AppComponent]
 })

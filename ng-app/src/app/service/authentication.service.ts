@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import {Http} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import {Headers} from '@angular/http';
@@ -21,7 +21,7 @@ export class AuthenticationService {
           return false;
         }
       })
-      //.catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+    //.catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
 
   getToken():string{

@@ -4,7 +4,7 @@ import "rxjs/add/operator/mergeMap";
 import {Http, Response, RequestOptions, Headers, URLSearchParams} from "@angular/http";
 import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Observable';
-import {AuthenticationService} from './authentication.service';
+
 
 
 

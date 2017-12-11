@@ -1,7 +1,9 @@
 package camt.cbsd.finalproject.controller;
 
 import camt.cbsd.finalproject.entity.Product;
+import camt.cbsd.finalproject.entity.Transaction;
 import camt.cbsd.finalproject.service.ProductService;
+import camt.cbsd.finalproject.service.TransactionService;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -113,6 +115,7 @@ public class ProductController {
     public Product updateProduct(@RequestBody Product product){
         return productService.updateProduct(product);
     }
+
 
 
 }

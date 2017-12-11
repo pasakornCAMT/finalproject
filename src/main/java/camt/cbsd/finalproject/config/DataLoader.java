@@ -1,7 +1,9 @@
 package camt.cbsd.finalproject.config;
 
 import camt.cbsd.finalproject.dao.ProductDao;
+import camt.cbsd.finalproject.dao.TransactionDao;
 import camt.cbsd.finalproject.entity.Product;
+import camt.cbsd.finalproject.entity.Transaction;
 import camt.cbsd.finalproject.entity.security.Authority;
 import camt.cbsd.finalproject.entity.security.AuthorityName;
 import camt.cbsd.finalproject.entity.security.User;
@@ -18,12 +20,18 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @ConfigurationProperties(prefix = "server")
 @Component
 public class DataLoader implements ApplicationRunner{
     ProductDao productDao;
+    TransactionDao transactionDao;
 
+    @Autowired
+    public void setTransactionDao(TransactionDao transactionDao) {
+        this.transactionDao = transactionDao;
+    }
 
     @Autowired
     public void setProductDao(ProductDao productDao) {
@@ -68,6 +76,18 @@ public class DataLoader implements ApplicationRunner{
         productDao.addProduct(product02);
         productDao.addProduct(product03);
 
+        Transaction transaction1 = Transaction.builder().date("12-12-2017").build();
+
+        transactionDao.addTransaction(transaction1);
+
+        transaction1.addProduct(product01);
+        transaction1.addProduct(product02);
+
+
+
+
+
+
         securitySetup();
     }
     public void securitySetup(){
@@ -106,7 +126,6 @@ public class DataLoader implements ApplicationRunner{
         authorityRepository.save(auth2);
 
         user1.setAuthorities(new ArrayList<>());
-        user1.getAuthorities().add(auth1);
         user1.getAuthorities().add(auth2);
         user2.setAuthorities(new ArrayList<>());
         user2.getAuthorities().add(auth1);

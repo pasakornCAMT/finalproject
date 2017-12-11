@@ -4,11 +4,9 @@ import camt.cbsd.finalproject.entity.Product;
 import camt.cbsd.finalproject.repository.ProductRepository;
 import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
-import javax.validation.OverridesAttribute;
 import java.util.List;
 
 @Profile("DBDataSource")
