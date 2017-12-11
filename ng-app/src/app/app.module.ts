@@ -23,7 +23,9 @@ import { SlipComponent } from './confirmation/slip/slip.component';
 import { PaypalComponent } from './confirmation/paypal/paypal.component';
 import { ListOfTransactionsComponent } from './transactions/list-of-transactions/list-of-transactions.component';
 import {TransactionDataServerService} from './service/transaction-data-server.service';
-import { ActorListComponent } from './Actor/actor-list/actor-list.component';
+
+import { TransactionDetailComponent } from './transactions/transaction-detail/transaction-detail.component';
+import {ActorListComponent} from './Actor/actor-list/actor-list.component';
 
 
 
@@ -43,7 +45,9 @@ import { ActorListComponent } from './Actor/actor-list/actor-list.component';
     SlipComponent,
     PaypalComponent,
     ListOfTransactionsComponent,
-    ActorListComponent,
+    TransactionDetailComponent,
+    ActorListComponent
+
   ],
   imports: [
     BrowserModule,
