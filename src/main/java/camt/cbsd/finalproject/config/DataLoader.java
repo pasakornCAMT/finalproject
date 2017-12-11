@@ -1,7 +1,9 @@
 package camt.cbsd.finalproject.config;
 
+import camt.cbsd.finalproject.dao.ActorDao;
 import camt.cbsd.finalproject.dao.ProductDao;
 import camt.cbsd.finalproject.dao.TransactionDao;
+import camt.cbsd.finalproject.entity.Actor;
 import camt.cbsd.finalproject.entity.Product;
 import camt.cbsd.finalproject.entity.Transaction;
 import camt.cbsd.finalproject.entity.security.Authority;
@@ -27,6 +29,12 @@ import java.util.List;
 public class DataLoader implements ApplicationRunner{
     ProductDao productDao;
     TransactionDao transactionDao;
+    ActorDao actorDao;
+
+    @Autowired
+    public void setActorDao(ActorDao actorDao) {
+        this.actorDao = actorDao;
+    }
 
     @Autowired
     public void setTransactionDao(TransactionDao transactionDao) {
@@ -38,18 +46,18 @@ public class DataLoader implements ApplicationRunner{
         this.productDao = productDao;
     }
 
+    @Autowired
     public void setUserRepository(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
+    @Autowired
     public void setAuthorityRepository(AuthorityRepository authorityRepository) {
         this.authorityRepository = authorityRepository;
     }
 
-    @Autowired
     UserRepository userRepository;
 
-    @Autowired
     AuthorityRepository authorityRepository;
 
     String baseUrl;
@@ -81,20 +89,31 @@ public class DataLoader implements ApplicationRunner{
         transaction1.addProduct(product01);
         transaction1.addProduct(product02);
 
+
         Transaction transaction2 = Transaction.builder().date("11-12-2017").build();
         transactionDao.addTransaction(transaction2);
         transaction2.addProduct(product01);
 
 
 
+       Actor actor1=Actor.builder().actorId("A-001").name("Nekky").build();
+       Actor actor2=Actor.builder().actorId("A-002").name("Puu").build();
 
 
-
+       actorDao.addActor(actor1);
+       actorDao.addActor(actor2);
 
         securitySetup();
+
+        actor1.setUser(user1);
+        user1.setActor(actor1);
+        actor2.setUser(user2);
+        user2.setActor(actor1);
     }
+
+    User user1, user2, user3;
     public void securitySetup(){
-        User user1 = User.builder()
+         user1 = User.builder()
                 .username("admin")
                 .password("admin")
                 .firstname("admin")
@@ -104,7 +123,7 @@ public class DataLoader implements ApplicationRunner{
                 .lastPasswordResetDate(Date.from(LocalDate.of(2016,01,01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
                 .build();
 
-        User user2 = User.builder()
+         user2 = User.builder()
                 .username("user")
                 .password("user")
                 .firstname("user")
@@ -113,7 +132,7 @@ public class DataLoader implements ApplicationRunner{
                 .enabled(true)
                 .lastPasswordResetDate(Date.from(LocalDate.of(2016,01,01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
                 .build();
-        User user3 = User.builder()
+         user3 = User.builder()
                 .username("disabled")
                 .password("disabled")
                 .firstname("user")
@@ -124,9 +143,15 @@ public class DataLoader implements ApplicationRunner{
                 .build();
         Authority auth1 = Authority.builder().name(AuthorityName.ROLE_USER).build();
         Authority auth2 = Authority.builder().name(AuthorityName.ROLE_ADMIN).build();
+        Authority auth3 = Authority.builder().name(AuthorityName.ROLE_CUSTOMER).build();
+        Authority auth4 = Authority.builder().name(AuthorityName.ROLE_SHOPKEEPER).build();
+
+
 
         authorityRepository.save(auth1);
         authorityRepository.save(auth2);
+        authorityRepository.save(auth3);
+        authorityRepository.save(auth4);
 
         user1.setAuthorities(new ArrayList<>());
         user1.getAuthorities().add(auth2);

@@ -25,7 +25,7 @@ public class ProductDaoDBImpl implements ProductDao {
 
     @Override
     public Product findById(long id) {
-        return productRepository.findhfById(id);
+        return productRepository.findById(id);
     }
 
     @Override
