@@ -16,6 +16,9 @@ export class AuthenticationService {
         let token = response.json() && (response.json() as any).token;
         if(token){
           localStorage.setItem('currentUser',JSON.stringify({username:username,token:token}));
+          let actor = response.json().actor;
+          console.log(actor);
+          localStorage.setItem('userDetails',JSON.stringify(actor));
           return true;
         }else {
           return false;
@@ -32,6 +35,7 @@ export class AuthenticationService {
 
   logout():void{
     localStorage.removeItem('currentUser');
+    localStorage.removeItem('userDetails');
   }
 
   getCurrentUser() {

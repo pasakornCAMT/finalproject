@@ -1,10 +1,14 @@
 package camt.cbsd.finalproject.security.controller;
 
 
+import camt.cbsd.finalproject.config.json.View;
+import camt.cbsd.finalproject.entity.Actor;
 import camt.cbsd.finalproject.security.JwtAuthenticationRequest;
 import camt.cbsd.finalproject.security.JwtTokenUtil;
 import camt.cbsd.finalproject.security.JwtUser;
 import camt.cbsd.finalproject.security.service.JwtAuthenticationResponse;
+import camt.cbsd.finalproject.service.ActorService;
+import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -19,9 +23,13 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 public class AuthenticationRestController {
+    @Autowired
+    private ActorService actorService;
 
     @Value("${jwt.header}")
     private String tokenHeader;
@@ -34,7 +42,7 @@ public class AuthenticationRestController {
 
     @Autowired
     private UserDetailsService userDetailsService;
-
+    @JsonView(View.Login.class)
     @PostMapping("${jwt.route.authentication.path}")
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest, Device device) throws AuthenticationException {
 
@@ -52,8 +60,12 @@ public class AuthenticationRestController {
         final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
         final String token = jwtTokenUtil.generateToken(userDetails, device);
 
+        Actor actor=actorService.getActorForTransfer(authenticationRequest.getUsername());
         // Return the token
-        return ResponseEntity.ok(new JwtAuthenticationResponse(token));
+        Map result = new HashMap();
+        result.put("token",token);
+        result.put("actor",actor);
+        return ResponseEntity.ok(result);
     }
 
     @GetMapping(value = "${jwt.route.authentication.refresh}")
