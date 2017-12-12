@@ -29,6 +29,7 @@ import {ActorListComponent} from './Actor/actor-list/actor-list.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +47,7 @@ import {ActorListComponent} from './Actor/actor-list/actor-list.component';
     PaypalComponent,
     ListOfTransactionsComponent,
     TransactionDetailComponent,
-    ActorListComponent
+    ActorListComponent,
 
   ],
   imports: [

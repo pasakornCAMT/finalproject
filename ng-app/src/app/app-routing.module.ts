@@ -7,6 +7,8 @@ import {SlipComponent} from './confirmation/slip/slip.component';
 import {PaypalComponent} from './confirmation/paypal/paypal.component';
 import {ListOfTransactionsComponent} from './transactions/list-of-transactions/list-of-transactions.component';
 import {TransactionDetailComponent} from './transactions/transaction-detail/transaction-detail.component';
+import {ActorListComponent} from './Actor/actor-list/actor-list.component';
+
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -15,7 +17,8 @@ const appRoutes: Routes = [
   {path: 'slip', component: SlipComponent},
   {path: 'paypal', component: PaypalComponent},
   {path: 'list-of-transactions', component: ListOfTransactionsComponent},
-  {path: 'transaction-detail/:id', component: TransactionDetailComponent}
+  {path: 'transaction-detail/:id', component: TransactionDetailComponent},
+  {path: 'actor', component: ActorListComponent}
 ];
 
 @NgModule({

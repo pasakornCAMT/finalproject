@@ -103,12 +103,13 @@ public class DataLoader implements ApplicationRunner{
        actorDao.addActor(actor1);
        actorDao.addActor(actor2);
 
-        securitySetup();
 
+        securitySetup();
         actor1.setUser(user1);
         user1.setActor(actor1);
         actor2.setUser(user2);
         user2.setActor(actor1);
+
     }
 
     User user1, user2, user3;
