@@ -19,6 +19,7 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.AUTO)
     long id;
     String date;
+    String payment;
     @ManyToMany
     List<Product> productList;
 

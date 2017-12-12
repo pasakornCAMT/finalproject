@@ -26,7 +26,7 @@ public class TransactionDaoDBImpl implements TransactionDao{
 
     @Override
     public List<Transaction> getTransactions(String searchText){
-        return transactionRepository.findByDate(searchText);
+        return transactionRepository.findByDateOrPayment(searchText,searchText);
     }
 
     @Override
