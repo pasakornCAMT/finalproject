@@ -128,11 +128,11 @@ public class DataLoader implements ApplicationRunner{
                 .build();
 
          user2 = User.builder()
-                .username("user")
-                .password("user")
-                .firstname("user")
-                .lastname("user")
-                .email("enabled@user.com")
+                .username("shopkeeper")
+                .password("shopkeeper")
+                .firstname("shopkeeper")
+                .lastname("shopkeeper")
+                .email("shopkeeper@shopkeeper.com")
                 .enabled(true)
                 .lastPasswordResetDate(Date.from(LocalDate.of(2016,01,01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
                 .build();
@@ -146,9 +146,9 @@ public class DataLoader implements ApplicationRunner{
                 .lastPasswordResetDate(Date.from(LocalDate.of(2016,01,01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
                 .build();
         Authority auth1 = Authority.builder().name(AuthorityName.ROLE_ADMIN).build();
-        Authority auth2 = Authority.builder().name(AuthorityName.ROLE_USER).build();
+        Authority auth2 = Authority.builder().name(AuthorityName.ROLE_SHOPKEEPER).build();
         Authority auth3 = Authority.builder().name(AuthorityName.ROLE_CUSTOMER).build();
-        Authority auth4 = Authority.builder().name(AuthorityName.ROLE_SHOPKEEPER).build();
+        Authority auth4 = Authority.builder().name(AuthorityName.ROLE_USER).build();
 
 
 
