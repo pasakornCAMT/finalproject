@@ -1,0 +1,18 @@
+<div *ngFor="let product of products" class="row">
+  <div class="col-sm-6 col-md-4" *ngIf="product.show == true && product.clicked >= 100">
+    <div class="thumbnail">
+      <img [src]="product.image" [title]="product.name">
+      <div class="caption">
+        <div role="button" (click)="showDetail(product)">
+          <h3>{{product.name}}</h3>
+        </div>
+        <p>{{product.description}}</p>
+        <h4>{{product.price}}฿</h4>
+        <h2>Clicked{{product.clicked}}times!!!</h2>
+        <p>
+          <a class="btn btn-primary" role="button" (click)="addToCart(product)">Add to Cart</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

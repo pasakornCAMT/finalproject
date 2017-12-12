@@ -7,4 +7,5 @@ export class Product {
   image: string;
   show: boolean;
   selected: boolean;
+  clicked: number;
 }

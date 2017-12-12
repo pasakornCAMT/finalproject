@@ -4,4 +4,9 @@
   <a class="list-group-item list-group-item-warning" routerLink="/manage-product" *ngIf="hasRole('SHOPKEEPER')">Manage Products</a>
   <a class="list-group-item list-group-item-warning" routerLink="/list-of-transactions" *ngIf="hasRole('SHOPKEEPER')">List of transactions</a>
   <a class="list-group-item list-group-item-warning" routerLink="/actor" *ngIf="hasRole('ADMIN')">Customers and Shopkeepers</a>
+  <a class="list-group-item" routerLink="/hot-product">
+    <div class="glyphicon glyphicon-fire">
+      Hot Products
+    </div>
+  </a>
 </div>

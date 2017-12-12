@@ -33,6 +33,7 @@ public class Product {
     boolean show = true;
     @NotNull
     boolean selected = false;
+    long clicked;
 
 
 }

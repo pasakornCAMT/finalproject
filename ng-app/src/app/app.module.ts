@@ -26,6 +26,7 @@ import {TransactionDataServerService} from './service/transaction-data-server.se
 
 import { TransactionDetailComponent } from './transactions/transaction-detail/transaction-detail.component';
 import {ActorListComponent} from './Actor/actor-list/actor-list.component';
+import { HotProductComponent } from './hot-product/hot-product.component';
 
 
 
@@ -48,6 +49,7 @@ import {ActorListComponent} from './Actor/actor-list/actor-list.component';
     ListOfTransactionsComponent,
     TransactionDetailComponent,
     ActorListComponent,
+    HotProductComponent,
 
   ],
   imports: [

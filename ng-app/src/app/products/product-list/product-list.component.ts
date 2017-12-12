@@ -36,10 +36,14 @@ export class ProductListComponent implements OnInit {
   }
   addToCart(product:Product){
     product.selected = true;
+    product.clicked = product.clicked+1;
     this.productDataServerService.updateProduct(product).subscribe((product)=>{
       console.log(product);
     })
+    alert("Product "+product.id+", "+product.name+" Added")
   }
+
+
 
 
 

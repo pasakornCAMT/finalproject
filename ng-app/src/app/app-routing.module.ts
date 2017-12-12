@@ -8,6 +8,7 @@ import {PaypalComponent} from './confirmation/paypal/paypal.component';
 import {ListOfTransactionsComponent} from './transactions/list-of-transactions/list-of-transactions.component';
 import {TransactionDetailComponent} from './transactions/transaction-detail/transaction-detail.component';
 import {ActorListComponent} from './Actor/actor-list/actor-list.component';
+import {HotProductComponent} from './hot-product/hot-product.component';
 
 
 const appRoutes: Routes = [
@@ -18,7 +19,8 @@ const appRoutes: Routes = [
   {path: 'paypal', component: PaypalComponent},
   {path: 'list-of-transactions', component: ListOfTransactionsComponent},
   {path: 'transaction-detail/:id', component: TransactionDetailComponent},
-  {path: 'actor', component: ActorListComponent}
+  {path: 'actor', component: ActorListComponent},
+  {path: 'hot-product', component: HotProductComponent}
 ];
 
 @NgModule({
