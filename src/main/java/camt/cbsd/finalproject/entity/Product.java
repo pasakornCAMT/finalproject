@@ -34,6 +34,8 @@ public class Product {
     @NotNull
     boolean selected = false;
     long clicked;
+    @OneToMany(mappedBy = "product")
+    List<Comment> comments;
 
 
 }
