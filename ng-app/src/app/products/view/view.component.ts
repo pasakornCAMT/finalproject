@@ -15,6 +15,10 @@ export class ViewComponent implements OnInit {
   product: Product;
   isNoData:boolean;
   inputCount: number;
+  showComment:boolean = false;
+  inputComment:string;
+  comment:Comment;
+
   ngOnInit() {
     this.isNoData = false;
     this.inputCount = 15;
@@ -25,6 +29,18 @@ export class ViewComponent implements OnInit {
         this.product = product;
       else
         this.isNoData = true;
+    })
+  }
+  clickComment(){
+    this.showComment = true;
+  }
+
+  commentProduct(product:Product){
+    this.comment = new Comment;
+    this.comment.text = this.inputComment;
+    product.comments.push(this.comment);
+    this.productDataServerService.updateProduct(product).subscribe((product)=>{
+      console.log(product);
     })
   }
 

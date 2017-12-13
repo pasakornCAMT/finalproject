@@ -1,9 +1,11 @@
 package camt.cbsd.finalproject.config;
 
 import camt.cbsd.finalproject.dao.ActorDao;
+import camt.cbsd.finalproject.dao.CommentDao;
 import camt.cbsd.finalproject.dao.ProductDao;
 import camt.cbsd.finalproject.dao.TransactionDao;
 import camt.cbsd.finalproject.entity.Actor;
+import camt.cbsd.finalproject.entity.Comment;
 import camt.cbsd.finalproject.entity.Product;
 import camt.cbsd.finalproject.entity.Transaction;
 import camt.cbsd.finalproject.entity.security.Authority;
@@ -23,7 +25,6 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 @ConfigurationProperties(prefix = "server")
 @Component
@@ -31,6 +32,12 @@ public class DataLoader implements ApplicationRunner{
     ProductDao productDao;
     TransactionDao transactionDao;
     ActorDao actorDao;
+    CommentDao commentDao;
+
+    @Autowired
+    public void setCommentDao(CommentDao commentDao) {
+        this.commentDao = commentDao;
+    }
 
     @Autowired
     public void setActorDao(ActorDao actorDao) {
@@ -81,6 +88,21 @@ public class DataLoader implements ApplicationRunner{
         Product product02=Product.builder().productId("P-002").name("Nestle").description("Nestle pure life").price(200).image(imageBaseUrl+"product2.jpg").show(true).clicked(150).build();
         Product product03=Product.builder().productId("P-003").name("Crystal").description("Crystal very good water").price(300).image(imageBaseUrl+"product3.jpg").show(true).clicked(30).build();
 
+        Comment comment1 = Comment.builder().text("Very Good").build();
+        Comment comment2 = Comment.builder().text("Very Bad").build();
+        Comment comment3 = Comment.builder().text("Very Cheap").build();
+        Comment comment4 = Comment.builder().text("Beautiful").build();
+
+        product01.addComment(comment1);
+        product01.addComment(comment4);
+        product02.addComment(comment2);
+        product03.addComment(comment3);
+
+        commentDao.addComment(comment1);
+        commentDao.addComment(comment2);
+        commentDao.addComment(comment3);
+        commentDao.addComment(comment4);
+
         productDao.addProduct(product01);
         productDao.addProduct(product02);
         productDao.addProduct(product03);
@@ -94,7 +116,6 @@ public class DataLoader implements ApplicationRunner{
         Transaction transaction2 = Transaction.builder().date("11-12-2017").payment("paypal").image(imageBaseUrl+"slip2.jpg").build();
         transactionDao.addTransaction(transaction2);
         transaction2.addProduct(product01);
-
 
 
        Actor actor1=Actor.builder().actorId("A-001").name("Nekky").build();

@@ -27,6 +27,8 @@ import {TransactionDataServerService} from './service/transaction-data-server.se
 import { TransactionDetailComponent } from './transactions/transaction-detail/transaction-detail.component';
 import {ActorListComponent} from './Actor/actor-list/actor-list.component';
 import { HotProductComponent } from './hot-product/hot-product.component';
+import {ActorDataServerService} from './service/actor-data-server.service';
+import {CommentDataServerService} from './service/comment-data-server.service';
 
 
 
@@ -62,7 +64,9 @@ import { HotProductComponent } from './hot-product/hot-product.component';
   providers: [
     ProductDataServerService,
     AuthenticationService,
-    TransactionDataServerService
+    TransactionDataServerService,
+    ActorDataServerService,
+    CommentDataServerService
   ],
   bootstrap: [AppComponent]
 })

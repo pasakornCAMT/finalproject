@@ -23,4 +23,9 @@ public class CommentDaoImpl implements CommentDao {
     public List<Comment> getComments() {
         return Lists.newArrayList(commentRepository.findAll());
     }
+
+    @Override
+    public Comment addComment(Comment comment) {
+        return commentRepository.save(comment);
+    }
 }

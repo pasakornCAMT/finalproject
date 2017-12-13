@@ -4,9 +4,7 @@ import camt.cbsd.finalproject.entity.Comment;
 import camt.cbsd.finalproject.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,6 +23,12 @@ public class CommentController {
     public ResponseEntity<?> getComments(){
         List<Comment> comments = commentService.getComments();
         return ResponseEntity.ok(comments);
+    }
+
+    @PostMapping("/comment")
+    public ResponseEntity<?> uploadComment(@RequestBody Comment comment){
+        commentService.addComment(comment);
+        return ResponseEntity.ok(comment);
     }
 
 

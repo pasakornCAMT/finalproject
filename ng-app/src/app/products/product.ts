@@ -8,4 +8,5 @@ export class Product {
   show: boolean;
   selected: boolean;
   clicked: number;
+  comments?:Comment[];
 }

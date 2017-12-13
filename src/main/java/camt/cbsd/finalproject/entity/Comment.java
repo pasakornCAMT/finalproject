@@ -17,6 +17,4 @@ public class Comment {
     @NonNull
     long id;
     String text;
-    @ManyToOne
-    Product product;
 }

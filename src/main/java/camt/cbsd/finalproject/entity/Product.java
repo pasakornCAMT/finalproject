@@ -6,7 +6,9 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Entity
 @Data
@@ -34,8 +36,14 @@ public class Product {
     @NotNull
     boolean selected = false;
     long clicked;
-    @OneToMany(mappedBy = "product")
+    @OneToMany
     List<Comment> comments;
+
+    public List<Comment> addComment(Comment comment){
+        comments = Optional.ofNullable(comments).orElse(new ArrayList<>());
+        comments.add(comment);
+        return comments;
+    }
 
 
 }

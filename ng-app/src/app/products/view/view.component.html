@@ -40,5 +40,19 @@
       </div>
     </div>
   </form>
+  <div *ngFor="let comment of product.comments; let i = index">
+    <div class="thumbnail">
+      <div class="caption">
+        Comment{{i+1}}:
+      </div>
+      <h4>{{comment.text}}</h4>
+    </div>
+  </div>
+  <hr>
+  <button class="btn btn-default center-block" (click)="clickComment()">Comment</button>
+  <div *ngIf="showComment == true">
+    <textarea class="form-control" [(ngModel)]="inputComment" placeholder="comment here..."></textarea>
+    <button class="btn btn-success" (click)="commentProduct(product)">Send</button>
+  </div>
 </div>
 
