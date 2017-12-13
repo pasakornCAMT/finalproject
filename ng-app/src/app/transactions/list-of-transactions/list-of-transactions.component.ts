@@ -16,8 +16,20 @@ export class ListOfTransactionsComponent implements OnInit {
     this.transactionDataServerService.getTransactionsData().subscribe(transitions => this.transactions = transitions);
   }
   search:string;
+  slip:string = "slip";
+  paypal:string = "paypal";
   onSearch(){
     this.transactionDataServerService.findTransaction(this.search)
+      .subscribe(
+        transactions => this.transactions = transactions
+        ,(error) => {
+          if (error.status === 401){
+            //error
+          }
+        })
+  }
+  onSearchPayment(payment:string){
+    this.transactionDataServerService.findTransactionPayment(payment)
       .subscribe(
         transactions => this.transactions = transactions
         ,(error) => {

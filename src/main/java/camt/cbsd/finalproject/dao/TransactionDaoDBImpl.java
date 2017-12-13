@@ -38,4 +38,11 @@ public class TransactionDaoDBImpl implements TransactionDao{
     public Transaction findById(long id) {
         return transactionRepository.findById(id);
     }
+
+    @Override
+    public List<Transaction> findByPayment(String payment) {
+        return transactionRepository.findByPayment(payment);
+    }
+
+
 }

@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
@@ -84,13 +85,13 @@ public class DataLoader implements ApplicationRunner{
         productDao.addProduct(product02);
         productDao.addProduct(product03);
 
-        Transaction transaction1 = Transaction.builder().date("12-12-2017").payment("slip").build();
+        Transaction transaction1 = Transaction.builder().date("12-12-2017").payment("slip").image(imageBaseUrl+"slip1.jpg").build();
         transactionDao.addTransaction(transaction1);
         transaction1.addProduct(product01);
         transaction1.addProduct(product02);
 
 
-        Transaction transaction2 = Transaction.builder().date("11-12-2017").payment("paypal").build();
+        Transaction transaction2 = Transaction.builder().date("11-12-2017").payment("paypal").image(imageBaseUrl+"slip2.jpg").build();
         transactionDao.addTransaction(transaction2);
         transaction2.addProduct(product01);
 
@@ -164,6 +165,10 @@ public class DataLoader implements ApplicationRunner{
         user2.getAuthorities().add(auth2);
         user3.setAuthorities(new ArrayList<>());
         user3.getAuthorities().add(auth3);
+
+        user1.setPassword(new BCryptPasswordEncoder().encode(user1.getPassword()));
+        user2.setPassword(new BCryptPasswordEncoder().encode(user2.getPassword()));
+        user3.setPassword(new BCryptPasswordEncoder().encode(user3.getPassword()));
 
         userRepository.save(user1);
         userRepository.save(user2);

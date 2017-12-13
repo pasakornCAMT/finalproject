@@ -8,4 +8,7 @@ public interface TransactionService {
     List<Transaction> getTransactions();
     List<Transaction> queryTransaction(String query);
     Transaction findById(long id);
+    List<Transaction> findByPayment(String payment);
+    Transaction addTransaction(Transaction transaction);
+
 }

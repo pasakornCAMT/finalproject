@@ -9,4 +9,6 @@ public interface TransactionDao {
     List<Transaction> getTransactions(String searchText);
     Transaction addTransaction(Transaction transaction);
     Transaction findById(long id);
+    List<Transaction> findByPayment(String payment);
+
 }

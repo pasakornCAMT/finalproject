@@ -20,6 +20,7 @@ public class Transaction {
     long id;
     String date;
     String payment;
+    String image;
     @ManyToMany
     List<Product> productList;
 

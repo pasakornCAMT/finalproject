@@ -33,4 +33,17 @@ public class TransactionServiceImpl implements TransactionService {
     public Transaction findById(long id) {
         return transactionDao.findById(id);
     }
+
+    @Override
+    public List<Transaction> findByPayment(String payment) {
+        if(payment == null || payment.equals("")) {
+            return transactionDao.getTransactions();
+        }
+        return transactionDao.findByPayment(payment);
+    }
+
+    @Override
+    public Transaction addTransaction(Transaction transaction) {
+        return transactionDao.addTransaction(transaction);
+    }
 }

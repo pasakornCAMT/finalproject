@@ -10,4 +10,5 @@ public interface TransactionRepository extends CrudRepository<Transaction,Long>{
     List<Transaction> findByDate(String date);
     Transaction findById(long id);
     List<Transaction> findByDateOrPayment(String date, String payment);
+    List<Transaction> findByPayment(String payment);
 }
