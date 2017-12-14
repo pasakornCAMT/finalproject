@@ -40,4 +40,7 @@ public class Actor {
     public List<Authority> getAuthorities(){
         return user.getAuthorities();
     }
+
+    @JsonView(View.Login.class)
+    Boolean active = true;
 }

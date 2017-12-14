@@ -41,5 +41,25 @@ public class ActorServiceImpl implements ActorService{
         return actor;
     }
 
+    @Override
+    public Actor updateActor(Actor actor) {
+        return actorDao.updateActor(actor);
+    }
+
+    @Override
+    public Boolean deleteActorById(long id) {
+        return actorDao.deleteActorById(id);
+    }
+
+    @Override
+    public List<Actor> findByName(String name) {
+        return actorDao.findByName(name);
+    }
+
+    @Override
+    public Actor findByUserUsername(String username) {
+        return actorDao.findByUserUsername(username);
+    }
+
 
 }

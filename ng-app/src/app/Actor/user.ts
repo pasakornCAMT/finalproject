@@ -8,9 +8,9 @@ export class User {
   firstname:string;
   lastname:string;
   email:string;
-  enabled:string;
+  enabled:boolean;
   lastPasswordResetDate:Date;
   actor:Actor;
-  authorities:Authority;
+  authorities:Authority[];
 
 }

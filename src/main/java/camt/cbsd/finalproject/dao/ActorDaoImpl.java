@@ -37,4 +37,26 @@ public class ActorDaoImpl implements ActorDao {
     public Actor findByUsername(String username) {
         return actorRepository.findByUserUsername(username);
     }
+
+    @Override
+    public Actor updateActor(Actor actor) {
+        return actorRepository.save(actor);
+    }
+
+    @Override
+    public Boolean deleteActorById(long id) {
+        return actorRepository.deleteActorById(id);
+    }
+
+    @Override
+    public List<Actor> findByName(String name) {
+        return actorRepository.findByName(name);
+    }
+
+    @Override
+    public Actor findByUserUsername(String username) {
+        return actorRepository.findByUserUsername(username);
+    }
+
+
 }

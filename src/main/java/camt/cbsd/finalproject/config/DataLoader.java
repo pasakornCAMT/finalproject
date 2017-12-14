@@ -118,9 +118,9 @@ public class DataLoader implements ApplicationRunner{
         transaction2.addProduct(product01);
 
 
-       Actor actor1=Actor.builder().actorId("A-001").name("Nekky").build();
-       Actor actor2=Actor.builder().actorId("A-002").name("Puu").build();
-       Actor actor3=Actor.builder().actorId("A-003").name("Nonae").build();
+       Actor actor1=Actor.builder().actorId("A-001").name("Nekky").active(true).build();
+       Actor actor2=Actor.builder().actorId("A-002").name("Puu").active(true).build();
+       Actor actor3=Actor.builder().actorId("A-003").name("Nonae").active(true).build();
 
 
        actorDao.addActor(actor1);

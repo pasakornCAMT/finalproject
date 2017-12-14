@@ -59,6 +59,44 @@ export class ActorDataServerService{
           })
       });
   }
+
+  updateActor(actor:Actor){
+    let headers = new Headers({'Content-Type': 'application/json'});
+    let options = new RequestOptions({headers: headers});
+    return this.http.put('http://localhost:8080/actor',JSON.stringify(actor),options)
+      .map((response:Response) => response.json()
+      );
+  }
+
+  deleteActor(id:number){
+    let headers = new Headers({'Content-Type': 'application/json'});
+    let options = new RequestOptions({headers: headers});
+    return this.http.delete('http://localhost:8080/actor/'+id,options)
+      .map((response:Response) => response.json());
+  }
+
+  findActors(search:string){
+    let actor: Actor;
+    let params: URLSearchParams = new URLSearchParams();
+    params.set('search',search);
+    let headers = new Headers({
+      'Content-type': 'application/json'
+      //, 'Authorization': 'Bearer ' + this.authenticationService.getToken()
+    });
+    return this.http.get('http://localhost:8080/actors/',{headers:headers,search:params})
+      .map(res => res.json());
+  }
+  findActorsUsername(search:string){
+    let actor: Actor;
+    let params: URLSearchParams = new URLSearchParams();
+    params.set('search',search);
+    let headers = new Headers({
+      'Content-type': 'application/json'
+      //, 'Authorization': 'Bearer ' + this.authenticationService.getToken()
+    });
+    return this.http.get('http://localhost:8080/actors-username/',{headers:headers,search:params})
+      .map(res => res.json());
+  }
 }
 
 

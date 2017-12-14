@@ -10,6 +10,7 @@ import {Actor} from "../actor";
 })
 export class ActorListComponent implements OnInit {
   actors:Actor[];
+  searchText:string;
   constructor(private actorDataServerService: ActorDataServerService, private router: Router ) { }
 
   ngOnInit() {
@@ -20,6 +21,32 @@ export class ActorListComponent implements OnInit {
             this.router.navigate(['login'],{queryParams:{source:'actor'}});
           }
         });
+  }
+  deleteActor(actor:Actor){
+    actor.active = false;
+    this.actorDataServerService.deleteActor(actor.id).subscribe((actor)=>{
+      this.actors.splice(this.actors.indexOf(actor),1);
+    })
+  }
+  onSearchName(){
+    this.actorDataServerService.findActors(this.searchText)
+      .subscribe(
+        actors => this.actors = actors
+        ,(error) => {
+          if (error.status === 401){
+            //error
+          }
+        })
+  }
+  onSearchUserName(){
+    this.actorDataServerService.findActorsUsername(this.searchText)
+      .subscribe(
+        actors => this.actors = actors
+        ,(error) => {
+          if (error.status === 401){
+            //error
+          }
+        })
   }
 
 }

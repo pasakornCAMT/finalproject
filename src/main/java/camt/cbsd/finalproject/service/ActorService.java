@@ -9,5 +9,9 @@ public interface ActorService {
     Actor findById(long id);
     Actor addActor(Actor actor);
     Actor getActorForTransfer(String username);
+    Actor updateActor(Actor actor);
+    Boolean deleteActorById(long id);
+    List<Actor> findByName(String name);
+    Actor findByUserUsername(String username);
 
 }
